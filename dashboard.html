@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaptive Availability Dashboard - Production Ready</title>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        /*
+         * Production-Ready CSS for Adaptive Availability Dashboard
+         * Licensed to: Mathew Tyler (TylerPresident.com | FakeGov.com)
+         * No external dependencies - fully self-contained
+         */
+        
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+            line-height: 1.5;
+        }
+        
+        /* Utility Classes */
+        .container { max-width: 1280px; margin: 0 auto; padding: 1.5rem; }
+        .grid { display: grid; }
+        .gap-1 { gap: 0.25rem; }
+        .gap-4 { gap: 1rem; }
+        .gap-6 { gap: 1.5rem; }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .grid-cols-24 { grid-template-columns: repeat(24, minmax(0, 1fr)); }
+        .flex { display: flex; }
+        .items-center { align-items: center; }
+        .items-start { align-items: flex-start; }
+        .justify-between { justify-content: space-between; }
+        .justify-center { justify-content: center; }
+        .space-x-2 > * + * { margin-left: 0.5rem; }
+        .space-x-3 > * + * { margin-left: 0.75rem; }
+        .space-x-4 > * + * { margin-left: 1rem; }
+        .space-x-6 > * + * { margin-left: 1.5rem; }
+        .space-y-2 > * + * { margin-top: 0.5rem; }
+        .space-y-3 > * + * { margin-top: 0.75rem; }
+        .hidden { display: none; }
+        .block { display: block; }
+        
+        /* Layout */
+        .w-4 { width: 1rem; }
+        .w-5 { width: 1.25rem; }
+        .w-6 { width: 1.5rem; }
+        .w-8 { width: 2rem; }
+        .w-12 { width: 3rem; }
+        .w-16 { width: 4rem; }
+        .w-full { width: 100%; }
+        .h-2 { height: 0.5rem; }
+        .h-4 { height: 1rem; }
+        .h-5 { height: 1.25rem; }
+        .h-6 { height: 1.5rem; }
+        .h-8 { height: 2rem; }
+        .h-12 { height: 3rem; }
+        .h-64 { height: 16rem; }
+        
+        /* Spacing */
+        .p-2 { padding: 0.5rem; }
+        .p-3 { padding: 0.75rem; }
+        .p-4 { padding: 1rem; }
+        .p-6 { padding: 1.5rem; }
+        .pt-2 { padding-top: 0.5rem; }
+        .pt-4 { padding-top: 1rem; }
+        .pb-4 { padding-bottom: 1rem; }
+        .pl-2 { padding-left: 0.5rem; }
+        .pr-2 { padding-right: 0.5rem; }
+        .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+        .m-2 { margin: 0.5rem; }
+        .mr-2 { margin-right: 0.5rem; }
+        .mr-3 { margin-right: 0.75rem; }
+        .ml-2 { margin-left: 0.5rem; }
+        .ml-3 { margin-left: 0.75rem; }
+        .mt-1 { margin-top: 0.25rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-3 { margin-top: 0.75rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-6 { margin-top: 1.5rem; }
+        .mb-1 { margin-bottom: 0.25rem; }
+        .mb-3 { margin-bottom: 0.75rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        
+        /* Colors */
+        .text-white { color: #ffffff; }
+        .text-black { color: #000000; }
+        .text-gray-400 { color: #9ca3af; }
+        .text-gray-500 { color: #6b7280; }
+        .text-gray-600 { color: #4b5563; }
+        .text-gray-700 { color: #374151; }
+        .text-gray-800 { color: #1f2937; }
+        .text-blue-600 { color: #2563eb; }
+        .text-blue-700 { color: #1d4ed8; }
+        .text-blue-800 { color: #1e40af; }
+        .text-blue-900 { color: #1e3a8a; }
+        .text-green-500 { color: #10b981; }
+        .text-green-600 { color: #059669; }
+        .text-green-700 { color: #047857; }
+        .text-green-800 { color: #065f46; }
+        .text-yellow-600 { color: #d97706; }
+        .text-orange-500 { color: #f97316; }
+        .text-orange-600 { color: #ea580c; }
+        .text-orange-700 { color: #c2410c; }
+        .text-orange-800 { color: #9a3412; }
+        .text-red-500 { color: #ef4444; }
+        .text-red-600 { color: #dc2626; }
+        .text-red-700 { color: #b91c1c; }
+        .text-red-800 { color: #991b1b; }
+        
+        /* Backgrounds */
+        .bg-white { background-color: #ffffff; }
+        .bg-gray-50 { background-color: #f9fafb; }
+        .bg-gray-100 { background-color: #f3f4f6; }
+        .bg-gray-200 { background-color: #e5e7eb; }
+        .bg-gray-300 { background-color: #d1d5db; }
+        .bg-gray-500 { background-color: #6b7280; }
+        .bg-blue-50 { background-color: #eff6ff; }
+        .bg-blue-100 { background-color: #dbeafe; }
+        .bg-blue-500 { background-color: #3b82f6; }
+        .bg-blue-600 { background-color: #2563eb; }
+        .bg-blue-700 { background-color: #1d4ed8; }
+        .bg-green-100 { background-color: #dcfce7; }
+        .bg-green-300 { background-color: #86efac; }
+        .bg-green-400 { background-color: #4ade80; }
+        .bg-green-500 { background-color: #22c55e; }
+        .bg-green-600 { background-color: #16a34a; }
+        .bg-yellow-100 { background-color: #fef3c7; }
+        .bg-yellow-500 { background-color: #eab308; }
+        .bg-orange-50 { background-color: #fff7ed; }
+        .bg-orange-100 { background-color: #ffedd5; }
+        .bg-orange-300 { background-color: #fdba74; }
+        .bg-orange-400 { background-color: #fb923c; }
+        .bg-orange-500 { background-color: #f97316; }
+        .bg-red-50 { background-color: #fef2f2; }
+        .bg-red-100 { background-color: #fee2e2; }
+        .bg-red-200 { background-color: #fecaca; }
+        .bg-red-500 { background-color: #ef4444; }
+        .bg-red-600 { background-color: #dc2626; }
+        .bg-red-700 { background-color: #b91c1c; }
+        
+        /* Borders */
+        .border { border: 1px solid #e5e7eb; }
+        .border-t { border-top: 1px solid #e5e7eb; }
+        .border-l-4 { border-left: 4px solid; }
+        .border-gray-200 { border-color: #e5e7eb; }
+        .border-red-200 { border-color: #fecaca; }
+        .border-blue-200 { border-color: #c3dafe; }
+        .border-blue-300 { border-color: #93c5fd; }
+        .border-blue-500 { border-color: #3b82f6; }
+        .border-orange-300 { border-color: #fdba74; }
+        .rounded { border-radius: 0.25rem; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .rounded-full { border-radius: 9999px; }
+        .rounded-r-lg { border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem; }
+        .rounded-t { border-top-left-radius: 0.25rem; border-top-right-radius: 0.25rem; }
+        
+        /* Typography */
+        .text-xs { font-size: 0.75rem; line-height: 1rem; }
+        .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+        .text-base { font-size: 1rem; line-height: 1.5rem; }
+        .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+        .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+        .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+        .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+        .font-medium { font-weight: 500; }
+        .font-semibold { font-weight: 600; }
+        .font-bold { font-weight: 700; }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .capitalize { text-transform: capitalize; }
+        
+        /* Effects */
+        .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+        .shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+        .ring-2 { box-shadow: 0 0 0 2px; }
+        .ring-blue-500 { --tw-ring-color: #3b82f6; box-shadow: 0 0 0 2px var(--tw-ring-color); }
+        
+        /* Animations */
+        .transition-colors { transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out; }
+        .transition-all { transition: all 0.15s ease-in-out; }
+        .duration-300 { transition-duration: 0.3s; }
+        .animate-spin { animation: spin 1s linear infinite; }
+        .hover\:bg-blue-700:hover { background-color: #1d4ed8; }
+        .hover\:bg-red-700:hover { background-color: #b91c1c; }
+        .hover\:text-blue-800:hover { color: #1e40af; }
+        .hover\:underline:hover { text-decoration: underline; }
+        .hover\:shadow-md:hover { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .disabled\:opacity-50:disabled { opacity: 0.5; }
+        .cursor-pointer { cursor: pointer; }
+        
+        /* Custom Components */
+        .attribution-bg {
+            background: linear-gradient(90deg, #dbeafe 0%, #e0e7ff 100%);
+        }
+        
+        .chart-bar {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .chart-bar:hover {
+            transform: scale(1.05);
+        }
+        
+        .status-ring {
+            animation: pulse 2s infinite;
+        }
+        
+        .min-h-screen {
+            min-height: 100vh;
+        }
+        
+        /* Button Styles */
+        button {
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: inherit;
+            transition: all 0.15s ease-in-out;
+        }
+        
+        button:focus {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+        
+        /* Input Styles */
+        input[type="checkbox"] {
+            width: 1rem;
+            height: 1rem;
+            accent-color: #3b82f6;
+        }
+        
+        /* Link Styles */
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        
+        @media (min-width: 1024px) {
+            .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        }
+        
+        /* Keyframes */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container">
+        <!-- Attribution -->
+        <div class="attribution-bg border-l-4 border-blue-500 p-4 mb-6 rounded-r-lg shadow-sm">
+            <div class="text-sm text-gray-700">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="font-semibold text-blue-900">Licensed and Attributed to:</p>
+                        <p class="text-lg font-bold text-blue-800">Mathew Tyler</p>
+                        <div class="flex space-x-2 mt-1">
+                            <a href="https://TylerPresident.com" target="_blank" rel="noopener noreferrer" 
+                               class="text-blue-600 hover:text-blue-800 hover:underline transition-colors">
+                                TylerPresident.com
+                            </a>
+                            <span class="text-gray-400">|</span>
+                            <a href="https://FakeGov.com" target="_blank" rel="noopener noreferrer" 
+                               class="text-blue-600 hover:text-blue-800 hover:underline transition-colors">
+                                FakeGov.com
+                            </a>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xs text-gray-600">Repository:</p>
+                        <a href="https://github.com/MTco/peak-availability" target="_blank" rel="noopener noreferrer"
+                           class="text-xs text-blue-600 hover:underline">
+                            github.com/MTco/peak-availability
+                        </a>
+                    </div>
+                </div>
+                <p class="text-xs mt-2 text-gray-600 border-t pt-2">
+                    All rights reserved. This system and its components are permanently licensed to Mathew Tyler.
+                </p>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading" class="flex items-center justify-center h-64">
+            <div class="text-center">
+                <div class="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                <p class="text-gray-600">Loading availability dashboard...</p>
+            </div>
+        </div>
+
+        <!-- Error State -->
+        <div id="error" class="hidden bg-red-50 border border-red-200 rounded-lg p-6">
+            <div class="flex items-center">
+                <svg class="w-6 h-6 text-red-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.268 15.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                </svg>
+                <div>
+                    <h3 class="text-lg font-semibold text-red-800">Unable to Load Dashboard</h3>
+                    <p id="error-message" class="text-red-700"></p>
+                    <button onclick="loadDashboard()" class="mt-3 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors">
+                        Try Again
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard -->
+        <div id="dashboard" class="hidden">
+            <!-- Header -->
+            <div class="bg-white shadow-lg rounded-lg p-6 mb-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-800 flex items-center">
+                            <svg class="w-8 h-8 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 00-2-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                            Availability Dashboard
+                        </h1>
+                        <p class="text-gray-600 mt-1">Real-time availability monitoring and peak period analysis</p>
+                    </div>
+                    
+                    <div class="flex items-center space-x-3">
+                        <div class="text-right text-sm text-gray-600">
+                            <p>Last Updated: <span id="last-update">--</span></p>
+                            <p>Auto-refresh: <span id="auto-refresh-status">On</span></p>
+                        </div>
+                        
+                        <button onclick="toggleAutoRefresh()" id="auto-refresh-btn" class="p-2 rounded-full transition-colors bg-green-100 text-green-600" title="Toggle auto-refresh">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                            </svg>
+                        </button>
+                        
+                        <button onclick="loadDashboard()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                            Refresh Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- View Options -->
+                <div class="border-t pt-4">
+                    <div class="flex items-center space-x-4">
+                        <span class="text-sm font-medium text-gray-700">View Options:</span>
+                        
+                        <label class="flex items-center">
+                            <input type="checkbox" id="show-chart" checked onchange="updateView()" class="mr-2">
+                            <span class="text-sm">Charts</span>
+                        </label>
+                        
+                        <label class="flex items-center">
+                            <input type="checkbox" id="show-factors" checked onchange="updateView()" class="mr-2">
+                            <span class="text-sm">Detailed Factors</span>
+                        </label>
+                        
+                        <label class="flex items-center">
+                            <input type="checkbox" id="show-offpeaks" checked onchange="updateView()" class="mr-2">
+                            <span class="text-sm">Off-Peak Periods</span>
+                        </label>
+                        
+                        <label class="flex items-center">
+                            <input type="checkbox" id="compact-mode" onchange="updateView()" class="mr-2">
+                            <span class="text-sm">Compact</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600">Current Status</p>
+                            <p id="current-status" class="text-2xl font-bold">Loading...</p>
+                        </div>
+                        <div id="status-icon" class="w-12 h-12 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="flex justify-between text-sm text-gray-600 mb-1">
+                            <span>Availability Score</span>
+                            <span id="current-score">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div id="score-bar" class="h-2 rounded-full transition-all duration-300 bg-green-500" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600">Peak Periods Today</p>
+                            <p id="peak-count" class="text-2xl font-bold text-gray-800">0</p>
+                        </div>
+                        <svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                    <p id="best-peak" class="text-sm text-gray-600 mt-2">Best: -- (0%)</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600">Off-Peak Periods</p>
+                            <p id="offpeak-count" class="text-2xl font-bold text-gray-800">0</p>
+                        </div>
+                        <svg class="w-12 h-12 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
+                        </svg>
+                    </div>
+                    <p id="lowest-offpeak" class="text-sm text-gray-600 mt-2">Lowest: -- (0%)</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600">Data Coverage</p>
+                            <p id="data-coverage" class="text-2xl font-bold text-gray-800">0/24</p>
+                        </div>
+                        <svg class="w-12 h-12 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 00-2-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2">Hours with historical data</p>
+                </div>
+            </div>
+
+            <!-- 24-Hour Chart -->
+            <div id="chart-section" class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 00-2-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                    24-Hour Availability Pattern
+                </h2>
+                
+                <div class="relative">
+                    <div id="availability-chart" class="grid grid-cols-24 gap-1 mb-4">
+                        <!-- Chart bars will be generated here -->
+                    </div>
+                    
+                    <div class="flex items-center justify-center space-x-6 text-sm">
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-green-500 rounded mr-2"></div>
+                            <span>Peak Periods</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-orange-300 rounded mr-2"></div>
+                            <span>Off-Peak Periods</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-blue-500 rounded mr-2 ring-2 ring-blue-500"></div>
+                            <span>Current Hour</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-gray-300 rounded mr-2"></div>
+                            <span>No Data</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Peak and Off-Peak Lists -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <!-- Peak Periods -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <svg class="w-6 h-6 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                        Peak Availability Periods
+                    </h2>
+                    <div id="peak-periods" class="space-y-3">
+                        <!-- Peak periods will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Off-Peak Periods -->
+                <div id="offpeak-section" class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <svg class="w-6 h-6 mr-2 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
+                        </svg>
+                        Off-Peak Periods
+                    </h2>
+                    <div id="offpeak-periods" class="space-y-3">
+                        <!-- Off-peak periods will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Factor Analysis -->
+            <div id="factors-section" class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 00-2-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                    Current Availability Factors
+                </h2>
+                <div id="factors-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Factors will be populated here -->
+                </div>
+            </div>
+
+            <!-- Summary -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Summary & Recommendations
+                </h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-semibold text-gray-700 mb-3">Current Assessment</h3>
+                        <div id="current-assessment" class="space-y-2 text-sm">
+                            <!-- Assessment will be populated here -->
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-semibold text-gray-700 mb-3">Recommendations</h3>
+                        <div id="recommendations" class="space-y-2 text-sm">
+                            <!-- Recommendations will be populated here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 pt-4 border-t border-gray-200">
+                    <p class="text-xs text-gray-500 text-center">
+                        Data licensed to Mathew Tyler (TylerPresident.com | FakeGov.com) • 
+                        Repository: github.com/MTco/peak-availability • 
+                        API: availability.noisy-grass-1e0c.workers.dev
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let availabilityData = null;
+        let currentData = null;
+        let autoRefresh = true;
+        let refreshInterval = null;
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDashboard();
+            startAutoRefresh();
+        });
+
+        // Load dashboard data
+        async function loadDashboard() {
+            try {
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('error').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'none';
+
+                // Fetch data from both endpoints
+                const [peaksResponse, currentResponse] = await Promise.all([
+                    fetch('https://availability.noisy-grass-1e0c.workers.dev/peaks'),
+                    fetch('https://availability.noisy-grass-1e0c.workers.dev/availability')
+                ]);
+
+                if (!peaksResponse.ok || !currentResponse.ok) {
+                    throw new Error('Failed to fetch data from API');
+                }
+
+                availabilityData = await peaksResponse.json();
+                currentData = await currentResponse.json();
+
+                updateDashboard();
+                updateLastUpdateTime();
+
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error-message').textContent = error.message;
+            }
+        }
+
+        // Update dashboard with current data
+        function updateDashboard() {
+            if (!availabilityData || !currentData) return;
+
+            updateStatusCards();
+            updateChart();
+            updatePeakOffPeakLists();
+            updateFactors();
+            updateSummary();
+        }
+
+        // Update status cards
+        function updateStatusCards() {
+            const currentScore = currentData.data.availabilityScore;
+            const status = getStatusText(currentScore);
+            const statusColor = getStatusColor(currentScore);
+
+            document.getElementById('current-status').textContent = status;
+            document.getElementById('current-status').className = `text-2xl font-bold text-${statusColor}-600`;
+            document.getElementById('current-score').textContent = `${currentScore}%`;
+            document.getElementById('score-bar').style.width = `${currentScore}%`;
+            document.getElementById('score-bar').className = `h-2 rounded-full transition-all duration-300 bg-${statusColor}-500`;
+
+            // Update status icon
+            const statusIcon = document.getElementById('status-icon');
+            statusIcon.className = `w-12 h-12 rounded-full flex items-center justify-center bg-${statusColor}-500 text-white`;
+
+            // Update peak counts
+            const peaks = calculatePeaks();
+            const offPeaks = calculateOffPeaks();
+
+            document.getElementById('peak-count').textContent = peaks.length;
+            document.getElementById('offpeak-count').textContent = offPeaks.length;
+            document.getElementById('data-coverage').textContent = `${availabilityData.total_hours_tracked || 0}/24`;
+
+            if (peaks.length > 0) {
+                document.getElementById('best-peak').textContent = `Best: ${peaks[0].timeRange} (${peaks[0].averageScore.toFixed(1)}%)`;
+            }
+
+            if (offPeaks.length > 0) {
+                document.getElementById('lowest-offpeak').textContent = `Lowest: ${offPeaks[0].timeRange} (${offPeaks[0].averageScore.toFixed(1)}%)`;
+            }
+        }
+
+        // Update 24-hour chart
+        function updateChart() {
+            const chartContainer = document.getElementById('availability-chart');
+            chartContainer.innerHTML = '';
+
+            const currentHour = new Date().getHours();
+            const peaks = calculatePeaks();
+            const offPeaks = calculateOffPeaks();
+
+            for (let hour = 0; hour < 24; hour++) {
+                const peak = availabilityData.peaks?.find(p => p.hour === hour);
+                const score = peak?.averageScore || 20;
+                const isPeak = peaks.some(p => p.hour === hour);
+                const isOffPeak = offPeaks.some(p => p.hour === hour);
+                const isCurrent = hour === currentHour;
+
+                const barContainer = document.createElement('div');
+                barContainer.className = 'text-center';
+
+                const bar = document.createElement('div');
+                bar.className = `chart-bar rounded-t transition-all duration-300 cursor-pointer ${isCurrent ? 'ring-2 ring-blue-500' : ''}`;
+                bar.style.height = `${Math.max(score * 0.8, 10)}px`;
+                
+                if (isCurrent) {
+                    bar.style.backgroundColor = '#3B82F6';
+                } else if (isPeak) {
+                    bar.style.backgroundColor = '#10B981';
+                } else if (isOffPeak) {
+                    bar.style.backgroundColor = '#F97316';
+                } else {
+                    bar.style.backgroundColor = '#D1D5DB';
+                }
+
+                bar.title = `${hour}:00 - ${score.toFixed(1)}% availability${peak ? ` (confidence: ${(peak.confidence * 100).toFixed(0)}%)` : ''}`;
+
+                const label = document.createElement('div');
+                label.className = `text-xs mt-1 ${isCurrent ? 'font-bold text-blue-600' : 'text-gray-600'}`;
+                label.textContent = hour;
+
+                barContainer.appendChild(bar);
+                barContainer.appendChild(label);
+                chartContainer.appendChild(barContainer);
+            }
+        }
+
+        // Update peak and off-peak lists
+        function updatePeakOffPeakLists() {
+            const peaks = calculatePeaks();
+            const offPeaks = calculateOffPeaks();
+            const currentHour = new Date().getHours();
+            const compactMode = document.getElementById('compact-mode').checked;
+
+            // Update peaks
+            const peakContainer = document.getElementById('peak-periods');
+            peakContainer.innerHTML = '';
+
+            peaks.slice(0, compactMode ? 3 : 8).forEach((peak, index) => {
+                const item = createPeriodItem(peak, index, true, peak.hour === currentHour);
+                peakContainer.appendChild(item);
+            });
+
+            // Update off-peaks
+            const offPeakContainer = document.getElementById('offpeak-periods');
+            offPeakContainer.innerHTML = '';
+
+            offPeaks.slice(0, compactMode ? 3 : 8).forEach((offPeak, index) => {
+                const item = createPeriodItem(offPeak, offPeak.hour, false, offPeak.hour === currentHour);
+                offPeakContainer.appendChild(item);
+            });
+        }
+
+        // Create period item element
+        function createPeriodItem(period, index, isPeak, isCurrent) {
+            const div = document.createElement('div');
+            div.className = `flex items-center justify-between p-3 rounded-lg border ${
+                isCurrent ? (isPeak ? 'border-blue-300 bg-blue-50' : 'border-orange-300 bg-orange-50') : 'border-gray-200'
+            }`;
+
+            const leftSide = document.createElement('div');
+            leftSide.className = 'flex items-center';
+
+            const badge = document.createElement('div');
+            badge.className = `w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold ${
+                isPeak ? (index === 0 ? 'bg-green-600' : index === 1 ? 'bg-green-500' : index === 2 ? 'bg-green-400' : 'bg-green-300') : 'bg-orange-400'
+            }`;
+            badge.textContent = isPeak ? (index + 1) : period.hour;
+
+            const info = document.createElement('div');
+            info.className = 'ml-3';
+
+            const timeRange = document.createElement('p');
+            timeRange.className = 'font-semibold text-gray-800';
+            timeRange.textContent = period.timeRange;
+
+            const details = document.createElement('div');
+            details.className = 'flex items-center space-x-2 text-sm text-gray-600';
+            details.innerHTML = `
+                <span>${period.averageScore.toFixed(1)}% availability</span>
+                ${!period.isUntracked ? `<span class="text-blue-600">• ${(period.confidence * 100).toFixed(0)}% confidence</span>` : ''}
+                <span class="text-gray-500">• ${period.isUntracked ? 'No data' : `${period.dataPoints} data points`}</span>
+            `;
+
+            info.appendChild(timeRange);
+            info.appendChild(details);
+            leftSide.appendChild(badge);
+            leftSide.appendChild(info);
+
+            const rightSide = document.createElement('div');
+            rightSide.className = 'flex items-center space-x-2';
+
+            if (isCurrent) {
+                const currentLabel = document.createElement('span');
+                currentLabel.className = `px-2 py-1 ${isPeak ? 'bg-blue-100 text-blue-800' : 'bg-orange-100 text-orange-800'} text-xs rounded-full`;
+                currentLabel.textContent = 'Current';
+                rightSide.appendChild(currentLabel);
+            }
+
+            const progressBar = document.createElement('div');
+            progressBar.className = 'w-16 bg-gray-200 rounded-full h-2';
+            const progress = document.createElement('div');
+            progress.className = `h-2 ${isPeak ? 'bg-green-500' : 'bg-orange-400'} rounded-full`;
+            progress.style.width = `${period.averageScore}%`;
+            progressBar.appendChild(progress);
+            rightSide.appendChild(progressBar);
+
+            div.appendChild(leftSide);
+            div.appendChild(rightSide);
+
+            return div;
+        }
+
+        // Update factors section
+        function updateFactors() {
+            if (!currentData.data.factors) return;
+
+            const factorsGrid = document.getElementById('factors-grid');
+            factorsGrid.innerHTML = '';
+
+            const factorIcons = {
+                timeOfDay: '🕐',
+                dayOfWeek: '📅',
+                location: '📍',
+                connectivity: '📶',
+                device: '📱',
+                weather: '☁️',
+                social: '👥',
+                legal: '⚖️',
+                entertainment: '🎬'
+            };
+
+            Object.entries(currentData.data.factors).forEach(([factorKey, value]) => {
+                const score = Math.round(value * 100);
+                const weight = currentData.data.weights?.[factorKey] || 0;
+                const impact = Math.round(value * weight * 100);
+
+                const factorDiv = document.createElement('div');
+                factorDiv.className = 'border rounded-lg p-4 hover:shadow-md transition-shadow';
+
+                factorDiv.innerHTML = `
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center">
+                            <span class="text-lg mr-2">${factorIcons[factorKey] || '📊'}</span>
+                            <h3 class="font-semibold text-gray-800 capitalize">
+                                ${factorKey.replace(/([A-Z])/g, ' $1').trim()}
+                            </h3>
+                        </div>
+                        <span class="px-2 py-1 rounded text-xs font-semibold ${getScoreBadgeClass(score)}">
+                            ${score}%
+                        </span>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="h-2 rounded-full transition-all duration-300 ${getScoreBarClass(score)}" style="width: ${score}%"></div>
+                        </div>
+                        
+                        <div class="flex justify-between text-xs text-gray-600">
+                            <span>Weight: ${Math.round(weight * 100)}%</span>
+                            <span>Impact: ${impact}</span>
+                        </div>
+                    </div>
+                `;
+
+                factorsGrid.appendChild(factorDiv);
+            });
+        }
+
+        // Update summary section
+        function updateSummary() {
+            const currentScore = currentData.data.availabilityScore;
+            const currentHour = new Date().getHours();
+            const peaks = calculatePeaks();
+
+            // Current assessment
+            const assessmentDiv = document.getElementById('current-assessment');
+            assessmentDiv.innerHTML = `
+                <p class="flex items-center">
+                    🕐 Current time: ${new Date().toLocaleTimeString()}
+                </p>
+                <p class="flex items-center">
+                    ${currentScore >= 60 ? '✅' : '⚠️'} Availability: ${getStatusText(currentScore)} (${currentScore}%)
+                </p>
+                <p class="flex items-center">
+                    📊 Data coverage: ${availabilityData.total_hours_tracked || 0} out of 24 hours
+                </p>
+            `;
+
+            // Recommendations
+            const recommendationsDiv = document.getElementById('recommendations');
+            let recommendationHTML = '';
+
+            if (currentScore >= 70) {
+                recommendationHTML += '<p class="flex items-start text-green-700">✅ Excellent time for any type of interaction or complex tasks</p>';
+            } else if (currentScore >= 45) {
+                recommendationHTML += '<p class="flex items-start text-blue-700">ℹ️ Good time for normal interactions and moderate complexity tasks</p>';
+            } else {
+                recommendationHTML += '<p class="flex items-start text-orange-700">⚠️ Consider waiting for better availability or using simpler approaches</p>';
+            }
+
+            if (peaks.length > 0) {
+                const nextPeak = peaks.find(p => p.hour > currentHour) || peaks[0];
+                recommendationHTML += `<p class="flex items-start text-gray-700">⏱️ Next peak period: ${nextPeak.timeRange}</p>`;
+            }
+
+            recommendationHTML += '<p class="flex items-start text-gray-600">⚡ Dashboard updates automatically every minute</p>';
+
+            recommendationsDiv.innerHTML = recommendationHTML;
+        }
+
+        // Helper functions
+        function calculatePeaks() {
+            if (!availabilityData?.peaks) return [];
+            const avgScore = availabilityData.peaks.reduce((sum, p) => sum + p.averageScore, 0) / availabilityData.peaks.length;
+            return availabilityData.peaks.filter(p => p.averageScore >= avgScore).sort((a, b) => b.averageScore - a.averageScore);
+        }
+
+        function calculateOffPeaks() {
+            if (!availabilityData?.peaks) return [];
+            const avgScore = availabilityData.peaks.reduce((sum, p) => sum + p.averageScore, 0) / availabilityData.peaks.length;
+            const offPeaks = availabilityData.peaks.filter(p => p.averageScore < avgScore);
+            
+            // Add untracked hours
+            const trackedHours = availabilityData.peaks.map(p => p.hour);
+            const untrackedHours = Array.from({length: 24}, (_, i) => i).filter(hour => !trackedHours.includes(hour));
+            const untrackedOffPeaks = untrackedHours.map(hour => ({
+                hour,
+                averageScore: 20,
+                confidence: 0,
+                timeRange: `${hour}:00 - ${(hour + 1) % 24}:00`,
+                dataPoints: 0,
+                isUntracked: true
+            }));
+
+            return [...offPeaks, ...untrackedOffPeaks].sort((a, b) => a.hour - b.hour);
+        }
+
+        function getStatusText(score) {
+            if (score >= 80) return 'Excellent';
+            if (score >= 65) return 'High';
+            if (score >= 45) return 'Moderate';
+            if (score >= 25) return 'Low';
+            return 'Very Low';
+        }
+
+        function getStatusColor(score) {
+            if (score >= 80) return 'green';
+            if (score >= 65) return 'blue';
+            if (score >= 45) return 'yellow';
+            if (score >= 25) return 'orange';
+            return 'red';
+        }
+
+        function getScoreBadgeClass(score) {
+            if (score >= 80) return 'bg-green-100 text-green-800';
+            if (score >= 60) return 'bg-blue-100 text-blue-800';
+            if (score >= 40) return 'bg-yellow-100 text-yellow-800';
+            if (score >= 20) return 'bg-orange-100 text-orange-800';
+            return 'bg-red-100 text-red-800';
+        }
+
+        function getScoreBarClass(score) {
+            if (score >= 80) return 'bg-green-500';
+            if (score >= 60) return 'bg-blue-500';
+            if (score >= 40) return 'bg-yellow-500';
+            if (score >= 20) return 'bg-orange-500';
+            return 'bg-red-500';
+        }
+
+        // UI Controls
+        function updateView() {
+            const showChart = document.getElementById('show-chart').checked;
+            const showFactors = document.getElementById('show-factors').checked;
+            const showOffPeaks = document.getElementById('show-offpeaks').checked;
+
+            document.getElementById('chart-section').style.display = showChart ? 'block' : 'none';
+            document.getElementById('factors-section').style.display = showFactors ? 'block' : 'none';
+            document.getElementById('offpeak-section').style.display = showOffPeaks ? 'block' : 'none';
+
+            updatePeakOffPeakLists(); // Refresh for compact mode
+        }
+
+        function toggleAutoRefresh() {
+            autoRefresh = !autoRefresh;
+            const btn = document.getElementById('auto-refresh-btn');
+            const status = document.getElementById('auto-refresh-status');
+
+            if (autoRefresh) {
+                btn.className = 'p-2 rounded-full transition-colors bg-green-100 text-green-600';
+                status.textContent = 'On';
+                startAutoRefresh();
+            } else {
+                btn.className = 'p-2 rounded-full transition-colors bg-gray-100 text-gray-600';
+                status.textContent = 'Off';
+                stopAutoRefresh();
+            }
+        }
+
+        function startAutoRefresh() {
+            stopAutoRefresh();
+            if (autoRefresh) {
+                refreshInterval = setInterval(loadDashboard, 60000); // Every minute
+            }
+        }
+
+        function stopAutoRefresh() {
+            if (refreshInterval) {
+                clearInterval(refreshInterval);
+                refreshInterval = null;
+            }
+        }
+
+        function updateLastUpdateTime() {
+            document.getElementById('last-update').textContent = new Date().toLocaleTimeString();
+        }
+    </script>
+</body>
+</html>
